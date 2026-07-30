@@ -6,6 +6,8 @@ import 'package:chat_app/views/profile/profile_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'home_screen.dart';
+
 class MainScreen extends GetView<MainController> {
   const MainScreen({super.key});
 
@@ -19,8 +21,8 @@ class MainScreen extends GetView<MainController> {
           //HomeScreen(),
           //FriendsScreen(),
           //UserListScreen(),
-          Container(), // Placeholder for HomeScreen
-          FriendsScreen(), // Placeholder for HomeScreen
+          HomeScreen(),
+          FriendsScreen(),
           FindPeopleScreen(),
           ProfileScreen(),
         ],

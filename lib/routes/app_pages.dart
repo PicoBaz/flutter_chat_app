@@ -1,3 +1,4 @@
+import 'package:chat_app/controllers/home_controller.dart';
 import 'package:chat_app/controllers/main_controller.dart';
 import 'package:chat_app/routes/app_routes.dart';
 import 'package:chat_app/views/splash_screen.dart';
@@ -5,13 +6,13 @@ import 'package:chat_app/views/auth/forgot_password_screen.dart';
 import 'package:chat_app/views/auth/login_screen.dart';
 import 'package:chat_app/views/main_screen.dart';
 import 'package:get/get.dart';
-
 import '../controllers/friend_controller.dart';
 import '../controllers/friend_request_controller.dart';
 import '../controllers/profile_controller.dart';
 import '../views/auth/register_screen.dart';
 import '../views/friend_request_screen.dart';
 import '../views/friends_screen.dart';
+import '../views/home_screen.dart';
 import '../views/profile/change_password_screen.dart';
 import '../views/profile/profile_screen.dart';
 
@@ -26,7 +27,7 @@ class AppPages {
 
     GetPage(
       name: AppRoutes.forgotPassword,
-      page: () => const ForgotPasswordScreen(),
+      page: () => const ForgotPasswordScreen()
     ),
 
     GetPage(
@@ -66,14 +67,14 @@ class AppPages {
       }),
     ),
 
-    //   GetPage(
-    //     name: AppRoutes.home,
-    //     page: () => const HomeScreen(),
-    // binding: BindingsBuilder((){
-    // Get.put(HoemController());
-    // }
-    //   ),
-
+      GetPage(
+        name: AppRoutes.home,
+        page: () => const HomeScreen(),
+    binding: BindingsBuilder((){
+    Get.put(HomeController());
+    }
+      ),
+      )
     //   GetPage(
     //     name: AppRoutes.chat,
     //     page: () => const ChatScreen(),
