@@ -8,11 +8,13 @@ import 'package:chat_app/views/main_screen.dart';
 import 'package:get/get.dart';
 import '../controllers/friend_controller.dart';
 import '../controllers/friend_request_controller.dart';
+import '../controllers/notification_controller.dart';
 import '../controllers/profile_controller.dart';
 import '../views/auth/register_screen.dart';
 import '../views/friend_request_screen.dart';
 import '../views/friends_screen.dart';
 import '../views/home_screen.dart';
+import '../views/notification_screen.dart';
 import '../views/profile/change_password_screen.dart';
 import '../views/profile/profile_screen.dart';
 
@@ -27,7 +29,7 @@ class AppPages {
 
     GetPage(
       name: AppRoutes.forgotPassword,
-      page: () => const ForgotPasswordScreen()
+      page: () => const ForgotPasswordScreen(),
     ),
 
     GetPage(
@@ -67,14 +69,22 @@ class AppPages {
       }),
     ),
 
-      GetPage(
-        name: AppRoutes.home,
-        page: () => const HomeScreen(),
-    binding: BindingsBuilder((){
-    Get.put(HomeController());
-    }
-      ),
-      )
+    GetPage(
+      name: AppRoutes.home,
+      page: () => const HomeScreen(),
+      binding: BindingsBuilder(() {
+        Get.put(HomeController());
+      }),
+    ),
+
+    GetPage(
+      name: AppRoutes.notifications,
+      page: () => NotificationScreen(),
+      binding: BindingsBuilder(() {
+        Get.put(NotificationController());
+      }),
+    ),
+
     //   GetPage(
     //     name: AppRoutes.chat,
     //     page: () => const ChatScreen(),
@@ -91,16 +101,6 @@ class AppPages {
     //   ),
 
     //
-    //   ),
-
-    //   GetPage(
-    //     name: AppRoutes.notifications,
-    //     page: () => const NotificationsScreen(),
-    //     binding: BindingsBuilder((){
-    //       Get.put(NotificationsController());
-    //     }
-    //
-    //     )
     //   ),
   ];
 }
