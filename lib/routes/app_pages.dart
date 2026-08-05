@@ -6,11 +6,13 @@ import 'package:chat_app/views/auth/forgot_password_screen.dart';
 import 'package:chat_app/views/auth/login_screen.dart';
 import 'package:chat_app/views/main_screen.dart';
 import 'package:get/get.dart';
+import '../controllers/chat_controller.dart';
 import '../controllers/friend_controller.dart';
 import '../controllers/friend_request_controller.dart';
 import '../controllers/notification_controller.dart';
 import '../controllers/profile_controller.dart';
 import '../views/auth/register_screen.dart';
+import '../views/chat_screen.dart';
 import '../views/friend_request_screen.dart';
 import '../views/friends_screen.dart';
 import '../views/home_screen.dart';
@@ -85,13 +87,14 @@ class AppPages {
       }),
     ),
 
-    //   GetPage(
-    //     name: AppRoutes.chat,
-    //     page: () => const ChatScreen(),
-    // binding: BindingsBuilder((){
-    // Get.put(ChatController());
-    // }
-    //   ),
+    GetPage(
+      name: AppRoutes.chat,
+      page: () => const ChatScreen(),
+      binding: BindingsBuilder(() {
+        Get.put(ChatController());
+      }),
+    ),
+
     //   GetPage(
     //     name: AppRoutes.usersList,
     //     page: () => const UsersListScreen(),

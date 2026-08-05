@@ -198,8 +198,12 @@ class ChatController extends GetxController {
     try {
       _isSending.value = true;
 
+      final participants = [currentUserId, otherUserId]..sort();
+      final computedChatId = "${participants[0]}_${participants[1]}";
+
       final message = MessageModel(
         id: _uuid.v4(),
+        chatId: computedChatId,
         senderId: currentUserId,
         receiverId: otherUserId,
         content: content,
@@ -218,6 +222,49 @@ class ChatController extends GetxController {
       _isSending.value = false;
     }
   }
+
+  // Future<void> sendMessage() async {
+  //   final currentUserId = _authController.user?.uid;
+  //   final otherUserId = _otherUser.value?.id;
+  //   final content = messageController.text.trim();
+  //   messageController.clear();
+  //
+  //   if (currentUserId == null || otherUserId == null || content.isEmpty) {
+  //     Get.snackbar("Error", 'You cannot send messages to this user');
+  //     return;
+  //   }
+  //
+  //   if (await _firestoreService.isUnfriended(currentUserId, otherUserId)) {
+  //     Get.snackbar(
+  //       "Error",
+  //       'You cannot send messages to this user as you are not friends',
+  //     );
+  //     return;
+  //   }
+  //
+  //   try {
+  //     _isSending.value = true;
+  //
+  //     final message = MessageModel(
+  //       id: _uuid.v4(),
+  //       senderId: currentUserId,
+  //       receiverId: otherUserId,
+  //       content: content,
+  //       type: MessageType.text,
+  //       timestamp: DateTime.now(),
+  //     );
+  //
+  //     await _firestoreService.sendMessage(message);
+  //     _isTyping.value = false;
+  //
+  //     _scrollToBottom();
+  //   } catch (e) {
+  //     Get.snackbar("Error", 'You cannot send message');
+  //     print(e);
+  //   } finally {
+  //     _isSending.value = false;
+  //   }
+  // }
 
   Future<void> _markMessagesAsRead() async {
     final currentUserId = _authController.user?.uid;
